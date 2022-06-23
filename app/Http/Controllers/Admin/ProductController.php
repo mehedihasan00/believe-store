@@ -27,18 +27,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
-            'name' => 'required|max:100',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
-        ]);
+        // $request->validate([
+        //     'category_id' => 'required',
+        //     'subcategory_id' => 'required',
+        //     'name' => 'required|max:100',
+        //     'description' => 'required',
+        //     'image' => 'required|image|mimes:jpeg,jpg,png,gif',
+        // ]);
         
         try {
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(724,480)->save('uploads/product/'.$name_gen);
+            Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
             $save_url = 'uploads/product/'.$name_gen;
 
             $product = new Product();
@@ -115,7 +115,7 @@ class ProductController extends Controller
             unlink($old_img);
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(724,480)->save('uploads/product/'.$name_gen);
+            Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
             $save_url = 'uploads/product/'.$name_gen;
 
             $product = Product::find($id);

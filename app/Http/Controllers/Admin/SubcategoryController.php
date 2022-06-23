@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\Subcategory;
+use Image;
 
 class SubcategoryController extends Controller
 {
@@ -28,6 +29,12 @@ class SubcategoryController extends Controller
             $subcategory = new Subcategory();
             $subcategory->category_id = $request->category_id;
             $subcategory->name = $request->name;
+            $image = $request->file('image');
+            if($image) {
+                $imageName = date('YmdHi').$image->getClientOriginalName();
+                Image::make($image)->resize(768,768)->save('uploads/subcategory/' . $imageName);
+                $subcategory['image'] = $imageName;
+            }
             $subcategory->save();
 
             $notification=array(
@@ -65,6 +72,16 @@ class SubcategoryController extends Controller
             $subcategory = Subcategory::findOrFail($id);
             $subcategory->category_id = $request->category_id;
             $subcategory->name = $request->name;
+
+            $image = $request->file('image');
+            if($image) {
+                $imageName = date('YmdHi').$image->getClientOriginalName();
+                Image::make($image)->resize(768,768)->save('uploads/subcategory/' . $imageName);
+                if(file_exists('uploads/subcategory/'. $subcategory->image) && !empty($subcategory->image)) {
+                    unlink('uploads/subcategory/' . $subcategory->image);
+                }
+                $subcategory['image'] = $imageName;
+            }
             $subcategory->save();
 
             $notification=array(
@@ -86,9 +103,11 @@ class SubcategoryController extends Controller
     {
         $subcategory = Subcategory::findOrFail($id);
         if($subcategory){
+            if(file_exists('uploads/subcategory/'.$subcategory->image) AND !empty($subcategory->image)){
+                unlink('uploads/subcategory/'.$subcategory->image);
+            }
             $subcategory->delete();
         }
-
         $notification=array(
             'message'=>'Subcategory Deleted Succefully..',
             'alert-type'=>'success'

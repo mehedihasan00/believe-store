@@ -28,9 +28,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/submenu', [HomeController::class, 'submenu'])->name('submenu');
-Route::get('/product', [HomeController::class, 'product'])->name('product');
-Route::get('/product-detail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/submenu/{id}', [HomeController::class, 'submenu'])->name('submenu');
+Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
+Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');
 
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');

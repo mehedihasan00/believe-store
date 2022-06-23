@@ -1,13 +1,11 @@
 @extends('layouts.admin-master', ['pageName'=> 'category', 'title' => 'Add Category'])
-
 {{-- @section('title') Add Category @endsection --}}
-
 @section('admin-content')
 
 <main>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card my-3">
                     <div class="card-header">
                         @if(@isset($categoryData))
@@ -18,7 +16,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <form action="{{ (@$categoryData) ? route('admin.category.update', $categoryData->id) : route('admin.category.store') }}" method="POST">
+                        <form action="{{ (@$categoryData) ? route('admin.category.update', $categoryData->id) : route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             
                             <div class="row">
@@ -26,6 +24,11 @@
                                     <label for="name"> Name <span class="text-danger">*</span> </label>
                                     <input type="text" name="name" value="{{ @$categoryData->name }}" class="form-control form-control-sm" id="name" placeholder="Enter Category name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="image"> Image <span class="text-danger">*</span> </label>
+                                    <input type="file" name="image" value="{{ @$categoryData->image }}" class="form-control form-control-sm" id="image">
+                                    @error('image') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
                             </div>
                             
@@ -41,7 +44,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-list mr-1"></i>
@@ -54,6 +57,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -62,6 +66,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td><img src="{{ asset('uploads/category/'.$item->image) }}" alt="" style="height: 60px; width: 60px"></td>
                                         <td>
                                             <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-info btn-mod-info btn-sm"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.category.delete', $item->id) }}" onclick="confirm('Are you sure to Delete?')" class="btn btn-danger btn-mod-danger btn-sm"><i class="fas fa-trash"></i></a>
@@ -77,7 +82,5 @@
             </div>
         </div>
     </div>
-    
-    
 </main>
 @endsection

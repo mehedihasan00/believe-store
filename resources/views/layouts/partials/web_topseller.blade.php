@@ -1,4 +1,4 @@
-<section id="top-seller" class="custom-product bg-light">
+{{-- <section id="top-seller" class="custom-product bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-12">
@@ -36,4 +36,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}

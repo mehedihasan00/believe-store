@@ -8,15 +8,16 @@
             </div>
         </div>
         <div class="row">
+            @foreach($category as $item)
             <div class="col-md-3 col-12 padding-bottom-24">
                 <div class="custom-img">
                     <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-1.webp') }}" alt=""  style="height: 316px">
+                        <img src="{{ asset('uploads/category/'. $item->image) }}" alt=""  style="height: 316px">
                         <div class="img-button">
                         </div>
                     </a>
-                    <div class="category-title">Category -1</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">{{ $item->name }}</div>
+                    <a href="{{ route('submenu', $item->id) }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -24,118 +25,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-2.webp') }}" alt=""  style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -2</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-3.webp') }}" alt=""  style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -3</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-4.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -4</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-5.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -5</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-6.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -6</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-7.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -7</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
-                <div class="custom-img">
-                    <a class="img-anchor">
-                        <img src="{{ asset('website/image/category/category-8.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
-                    </a>
-                    <div class="category-title">Category -8</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
-                        <button class="button-1 ubtn">
-                            <span class="ubtn-hover"></span>
-                            <span class="ubtn-data ubtn-text">See More</span>
-                        </button>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
