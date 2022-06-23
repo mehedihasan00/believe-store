@@ -1,22 +1,34 @@
 @extends('layouts.web-master')
 @section('web-content')
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sub Menu</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="custom-product" class="custom-product">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-12">
-                <h2 class="custom-product-title text-uppercase">Featured Menu</h2>
+                <h2 class="custom-product-title text-uppercase">Featured Sub Menu</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-12 padding-bottom-24">
+            <div class="col-md-3 col-sm-6 col-12 padding-bottom-24">
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-1.webp') }}" alt=""  style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -1</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -1</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -24,15 +36,13 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
+            <div class="col-md-3 col-sm-6 col-12 padding-bottom-24">
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-2.webp') }}" alt=""  style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -2</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -2</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -40,15 +50,13 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-3 col-12 padding-bottom-24">
+            <div class="col-md-3 col-sm-6 col-12 padding-bottom-24">
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-3.webp') }}" alt=""  style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -3</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -3</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -60,11 +68,9 @@
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-4.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -4</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -4</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -76,11 +82,9 @@
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-5.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -5</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -5</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -92,11 +96,9 @@
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-6.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -6</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -6</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -108,11 +110,9 @@
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-7.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -7</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -7</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -124,11 +124,9 @@
                 <div class="custom-img">
                     <a class="img-anchor">
                         <img src="{{ asset('website/image/category/category-8.webp') }}" alt="" style="height: 316px">
-                        <div class="img-button">
-                        </div>
                     </a>
-                    <div class="category-title">Category -8</div>
-                    <a href="{{ route('submenu') }}" class="button-1-a">
+                    <div class="category-title">Sub Category -8</div>
+                    <a href="{{ route('product') }}" class="button-1-a">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">See More</span>
@@ -139,72 +137,7 @@
         </div>
     </div>
 </section>
-{{-- <section id="product-filter" class="product-filter bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="button-group filter-button-group button-mod-group">
-                    <button data-filter="*">Show all</button>
-                    <button data-filter=".mug">Mug</button>
-                    <button data-filter=".key-chain">Key Ring</button>
-                    <button data-filter=".phone-case">Phone Case</button>
-                    <button data-filter=".phone">Phone</button>
-                    <button data-filter=".wallet">Wallet</button>
-                </div>
-            </div>
-        </div>
-        <div class="row grid">
-            <div class="col-md-3 element-item m-mod-b ">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/147655826_699793890703464_7899776114437445081_n-1.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/147655826_699793890703464_7899776114437445081_n-1.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b phone-case">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/34-2.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/Phone_Case_4-2.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b phone-case">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/PhoneCase10-1.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/PhoneCase10-1.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b phone-case">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/PhoneCase9-2.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/PhoneCase9-2.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b key-chain">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/Heart-Shape-Front.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/Heart-Shape-Front.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b mug">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/Mug-11.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/Mug-11.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b phone">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/s5.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/s5.webp') }}" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 element-item m-mod-b wallet">
-                <div class="img-box">
-                    <a class="img-link" href="{{ asset('website/image/Product Filter/Customized-Wallet-Green.webp') }}"></a>
-                    <img src="{{ asset('website/image/Product Filter/Customized-Wallet-Green.webp') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
+
 <section id="product-filter" class="product-filter bg-light">
     <div class="container">
         <div class="row">
@@ -484,4 +417,5 @@
         </div>
     </div>
 </section>
+
 @endsection

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -26,9 +27,10 @@ use App\Http\Controllers\Admin\SubcategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('pages.website.index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/submenu', [HomeController::class, 'submenu'])->name('submenu');
+Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product-detail', [HomeController::class, 'productDetail'])->name('productDetail');
 
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
