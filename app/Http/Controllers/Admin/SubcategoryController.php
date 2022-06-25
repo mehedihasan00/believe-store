@@ -20,9 +20,10 @@ class SubcategoryController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'category_id' => 'required',
             'name' => 'required|unique:subcategories,name|max:100',
+            'image' => 'required|mimes:jpeg,jpg,png,gif,webp'
         ]);
         
         try {

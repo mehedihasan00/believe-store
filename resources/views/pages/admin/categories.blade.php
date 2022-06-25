@@ -20,15 +20,19 @@
                             @csrf
                             
                             <div class="row">
-                                <div class="col-md-12 mb-2">
+                                <div class="col-md-6 mb-2">
                                     <label for="name"> Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$categoryData->name }}" class="form-control form-control-sm" id="name" placeholder="Enter Category name">
+                                    <input type="text" name="name" value="{{ @$categoryData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="image"> Image <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image" value="{{ @$categoryData->image }}" class="form-control form-control-sm" id="image">
+
+                                    <label for="image"> Image <span style="font-size: 12px; font-weight: 400">(768px * 768px)</span> <span class="text-danger">*</span> </label>
+                                    <input type="file" name="image" value="{{ @$categoryData->image }}" class="form-control form-control-sm" id="image" onchange="mainThambUrl(this)">
                                     @error('image') <span style="color: red">{{$message}}</span> @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group mt-2">
+                                        <img class="form-controlo img-thumbnail" src="{{(@$categoryData) ? asset($categoryData->image) : asset('uploads/no.png') }}" id="mainThmb" style="width: 150px;height: 120px;">
+                                    </div>
                                 </div>
                             </div>
                             
@@ -66,7 +70,11 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td><img src="{{ asset('uploads/category/'.$item->image) }}" alt="" style="height: 60px; width: 60px"></td>
+                                        @if($item->image)
+                                        <td><img src="{{ asset($item->image) }}" alt="" style="height: 60px; width: 60px"></td>
+                                        @else
+                                        <td><img src="{{ asset('uploads/no.png') }}" alt="" style="height: 60px; width: 60px"></td>
+                                        @endif
                                         <td>
                                             <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-info btn-mod-info btn-sm"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.category.delete', $item->id) }}" onclick="confirm('Are you sure to Delete?')" class="btn btn-danger btn-mod-danger btn-sm"><i class="fas fa-trash"></i></a>
@@ -84,3 +92,18 @@
     </div>
 </main>
 @endsection
+@push('admin-js')
+<script>
+    function mainThambUrl(input){
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#mainThmb').attr('src',e.target.result).width(150)
+                  .height(120);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+</script>
+@endpush

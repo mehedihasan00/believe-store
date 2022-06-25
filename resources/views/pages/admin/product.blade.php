@@ -111,7 +111,7 @@
                                         <td>{{ $item->category->name }}</td>
                                         <td>{{ $item->subcategory->name }}</td>
                                         <td>
-                                            <a href="{{ route('admin.product.edit', $item->id) }}" class="btn-sm btn btn-info"><i class="fas fa-user-edit"></i></a>
+                                            <a href="{{ route('admin.product.edit', $item->id) }}" class="btn-sm btn btn-info"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.product.delete', $item->id) }}" onclick="confirm('Are you sure to Delete?')" class="btn-sm btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -175,8 +175,6 @@
                   .height(120);
         };
         reader.readAsDataURL(input.files[0]);
-
-
       }
     }
 </script>

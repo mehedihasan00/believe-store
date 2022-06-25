@@ -16,25 +16,25 @@
                     </ul> 
                 </div> --}}
                 <div class="col-md-3 col-6">
-                    <h3 class="company-title">Believe Store BD</h3>
-                    <p class="about-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that</p>
+                    <h3 class="company-title">{{ $content->name }}</h3>
+                    <div class="about-text">{!! Str::words($content->about, 25) !!}</div>
                 </div>
                 <div class="col-md-3 col-6">
                     <h4>Company Address</h4>
                     <ul class="address">
-                        <li>103, Senpara parbota, Mirpur-10, Dhaka</li>
-                        <li><b>Phone:</b> 01792283208</li>
-                        <li><b>Email:</b> info@gmai.com</li>
+                        <li>{{ $content->address }}</li>
+                        <li><b>Phone:</b> <a href="tel:{{ $content->phone }}">{{ $content->phone }}</a></li>
+                        <li><b>Email:</b> <a href="mailto:{{ $content->email }}">{{ $content->email }}</a></li>
                         <li></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-6">
                     <h4>Follow Us</h4>
                     <ul class="link">
-                        <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
-                        <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
-                        <li><a href=""><i class="fab fa-instagram-square"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="{{ $content->facebook }}" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                        <li><a href="{{ $content->twitter }}" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                        <li><a href="{{ $content->instagram }}" target="_blank"><i class="fab fa-instagram-square"></i></a></li>
+                        <li><a href="{{ $content->linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-6">
@@ -49,12 +49,12 @@
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="copyright">
-                        <p>@Copyright 2022, All right reserved, Believe Store BD.</p>
+                        <p>@Copyright 2022, All right reserved, {{ $content->name }}.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
                     <div class="developed">
-                        <p>Designed & Developed By Link Up Technology Ltd.</p>
+                        <p>Designed & Developed By <a href="https://www.linktechbd.com" target="_blank">Link Up Technology Ltd.</a></p>
                     </div>
                 </div>
             </div>

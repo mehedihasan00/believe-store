@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-12">
+            {{-- <div class="col-md-6 col-12">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -79,29 +79,34 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
                   </div>
+            </div> --}}
+            <div class="col-md-6 col-12">
+                <div class="detail-img d-flex justify-content-center align-items-center">
+                    <img src="{{ asset( $product->image ) }}" alt="">
+                </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-12">
                 <div class="detail-product">
                     <div class="title"><strong>Product Name: </strong>{{ $product->name}}</div>
-                    <div class="title"><strong>Product color available: </strong>Red, Green, Blue</div>
+                    {{-- <div class="title"><strong>Product color available: </strong>Red, Green, Blue</div> --}}
+                    <div class="title"><strong>Product Category: </strong>{{ $category->name }}</div>
+                    <div class="title"><strong>Product Sub Category: </strong>{{ $subcategory->name }}</div>
                     <div class="title" style="color: #000; text-align: justify"><strong>Product Description: </strong>
-                        Material -- Acrylic PET Plastic, highly transparent and invisible, durable for long time to use, Superior elasticity and toughness, good plasticity, environmental materials, non-toxic and tasteless, will not pose any threat to your home, a good helper for your family and office.
-                        Size-- Thickening section, Thickness 1mm*Width 3cm* Length 1m thick enough and wide enough that you can tape the items you want to stick, the length also allows you to use it for a long time, and you can cut any size according to your unique needs.
-                        Super Sticky & Save Space -- Strong bearing capacity, long-lasting strong adhesion, can hang heavy objects, stick the items on the tape, stick to the wall, save space, reduce confusion, ensure your items are safe and not falling.
+                        {!! $product->description !!}
                     </div>
-                    <a href="" class="button-1-a">
+                    {{-- <a href="" class="button-detail">
                         <button class="button-1 ubtn">
                             <span class="ubtn-hover"></span>
                             <span class="ubtn-data ubtn-text">Order Now</span>
                         </button>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="product-filter" class="product-filter bg-light">
+{{-- <section id="product-filter" class="product-filter bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -379,7 +384,8 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
+
 @endsection
 @push('web-js')
  <!-- Swiper JS -->

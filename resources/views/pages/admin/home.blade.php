@@ -7,7 +7,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
+            {{-- <div class="col-xl-3 col-md-6">
                 <div class="card text-white mb-4" style="background: #484d52">
                     <div class="card-body">
                         <div>Customer Message</div>
@@ -18,8 +18,8 @@
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
+            </div> --}}
+            {{-- <div class="col-xl-3 col-md-6">
                 <div class="card text-white mb-4" style="background: #484d52">
                     <div class="card-body">
                         <div>Service Query Message</div>
@@ -30,7 +30,7 @@
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-xl-3 col-md-6">
                 <div class="card text-white mb-4" style="background: #484d52">
                     <div class="card-body">
@@ -39,6 +39,18 @@
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="{{ route('admin.categories') }}">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card text-white mb-4" style="background: #484d52">
+                    <div class="card-body">
+                        <div>Product Sub Category</div>
+                        <span>{{ $subcategory }}</span>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="{{ route('admin.subcategories') }}">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>

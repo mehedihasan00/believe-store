@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Subcategory;
 use App\Models\Query;
 
 
@@ -28,7 +29,8 @@ class DashboardController extends Controller
         $message = count(Message::all());
         $product = count(Product::all());
         $category = count(Category::all());
+        $subcategory = count(Subcategory::all());
         $query = count(Query::all());
-        return view('pages.admin.home', compact('message', 'category', 'product','query'));
+        return view('pages.admin.home', compact('message', 'category', 'product','query', 'subcategory'));
     }
 }

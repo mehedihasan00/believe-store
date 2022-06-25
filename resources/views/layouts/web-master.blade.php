@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('website/assets/css/viewbox.css') }}">
     <link rel="stylesheet" href="{{ asset('website/assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('website/style.css') }}" />
-    <title>Believe Store</title>
+    <title>{{ $content->name }}</title>
     @stack('web-css')
 </head>
 
@@ -24,9 +24,6 @@
     {{-- Main Section --}}
     @yield('web-content')
     
-
-    @include('layouts.partials.web_bestchoice')
-    @include('layouts.partials.web_topseller')
     {{-- Footer Partial --}}
     @include('layouts.partials.web_footer')
     {{-- End Footer Partial --}}
@@ -34,7 +31,25 @@
     <script src="{{ asset('website/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('website/assets/bootstrap-5.2.0/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('website/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{asset('website/assets/js/bootstrap3-typeahead.min.js')}}" ></script>
     <script src="{{ asset('website/assets/js/jquery.viewbox.min.js') }}"></script>
+
+    <script type="text/javascript">
+        var baseUri = "{{ url('/') }}";
+        $('.keyword').typeahead({
+            minLength: 1,
+            source: function (keyword, process) {
+                return $.get(`${baseUri}/get_suggestions/${keyword}`, function (data) {
+                    return process(data);
+                });
+            },
+            updater:function (item) {
+                $(location).attr('href', '/search?q='+item);
+                return item;
+            }
+        });
+    </script>
+    
     <script>
         $(window).on('scroll', function() {
           if ($(window).scrollTop() > 80) {

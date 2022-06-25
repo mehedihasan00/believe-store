@@ -28,20 +28,23 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:categories,name|max:100',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg,webp',
+            'image' => 'mimes:jpeg,png,jpg,gif,webp',
         ]);
-        $image = $request->file('image');
-        $nameGen = hexdec(uniqid());
-        $imgExt = strtolower($image->getClientOriginalExtension());
-        $imgName = $nameGen. '.' . $imgExt;
-        $upLocation = 'uploads/category/';
-        // $image->move($upLocation, $imgName);
-        Image::make($image)->resize(768,768)->save($upLocation . $imgName);
-        
+        $imgName = '';
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $nameGen = hexdec(uniqid());
+            $imgExt = strtolower($image->getClientOriginalExtension());
+            $imgName = $nameGen. '.' . $imgExt;
+            $upLocation = 'uploads/category/';
+            // $image->move($upLocation, $imgName);
+            Image::make($image)->resize(768,768)->save($upLocation . $imgName);
+            $lastImage = $upLocation . $imgName;
+        }
         try {
             $category = new Category();
             $category->name = $request->name;
-            $category->image = $imgName;
+            $category->image = $lastImage;
             $category->save();
             
             $notification=array(
@@ -84,6 +87,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100',
+            'image' => 'mimes:jpeg,png,jpg,gif,webp',
         ]);
         
         try {
@@ -93,10 +97,11 @@ class CategoryController extends Controller
             if($image) {
                 $imageName = date('YmdHi').$image->getClientOriginalName();
                 Image::make($image)->resize(768,768)->save('uploads/category/' . $imageName);
-                if(file_exists('uploads/category/'. $category->image) && !empty($category->image)) {
-                    unlink('uploads/category/' . $category->image);
+                if(file_exists($category->image) && !empty($category->image)) {
+                    unlink($category->image);
                 }
-                $category['image'] = $imageName;
+                $lastImage = 'uploads/category/'. $imageName;
+                $category['image'] = $lastImage;
             }
             $category->save();
 
@@ -126,8 +131,8 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         if($category){
-            if(file_exists('uploads/category/'.$category->image) AND !empty($category->image)){
-                unlink('uploads/category/'.$category->image);
+            if(file_exists($category->image) AND !empty($category->image)){
+                unlink($category->image);
             }
             $category->delete();
         }

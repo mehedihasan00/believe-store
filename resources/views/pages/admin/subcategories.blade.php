@@ -7,7 +7,7 @@
 <main>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <div class="card my-3">
                     <div class="card-header">
                         @if(@isset($subcategoryData))
@@ -21,36 +21,33 @@
                         <form action="{{ (@$subcategoryData) ? route('admin.subcategory.update', $subcategoryData->id) : route('admin.subcategory.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12 mb-2">
+                                <div class="col-md-6 mb-2">
                                     <label for="name"> Category <span class="text-danger">*</span> </label>
-                                    <select name="category_id" class="form-control form-control-sm">
+                                    <select name="category_id" class="form-control form-control-sm mb-2">
                                         <option value="">Select Category Option</option>
                                         @foreach ($category as $item)
                                             <option value="{{ $item->id }}" {{ $item->id == @$subcategoryData->category_id ? 'selected' : '' }} >{{ $item->name }}</option>
                                         @endforeach
-                                        
                                     </select>
                                     @error('category_id') <span style="color: red">{{$message}}</span> @enderror
+
+
+                                    <label for="name"> Subcategory Name <span class="text-danger">*</span> </label>
+                                    <input type="text" name="name" value="{{ @$subcategoryData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
+                                    @error('name') <span style="color: red">{{$message}}</span> @enderror
+
+
+                                    <label for="image"> Subcategory Image <span class="text-danger">*</span></label>
+                                    <input type="file" name="image" value="{{ @$subcategoryData->image }}" class="form-control form-control-sm mb-2" id="image" onchange="mainThambUrl(this)">
+                                    @error('image') <span style="color: red">{{$message}}</span> @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group mt-4 ml-5">
+                                        <img class="form-controlo img-thumbnail" src="{{(@$subcategoryData) ? asset('uploads/subcategory/'.$subcategoryData->image) : asset('uploads/no.png') }}" id="mainThmb" style="width: 150px;height: 120px;">
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <label for="name"> Subcategory Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$subcategoryData->name }}" class="form-control form-control-sm" id="name" placeholder="Enter Category name">
-                                    @error('name') <span style="color: red">{{$message}}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <label for="image"> Subcategory Image <span class="text-danger">*</span></label>
-                                    <input type="file" name="image" value="{{ @$subcategoryData->image }}" class="form-control form-control-sm" id="image">
-                                    @error('image') <span style="color: red">{{$message}}</span> @enderror
-                                </div>
-                            </div>
-
-
                             <div class="clearfix border-top">
                                 <div class="float-md-right mt-2">
                                     <button type="reset" {{ (@$subcategoryData) ? 'id=prev' : '' }} class="btn btn-dark btn-sm">{{ (@$subcategoryData)? 'Prev' : 'Reset' }}</button>
@@ -63,7 +60,7 @@
 
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-list mr-1"></i>
@@ -110,6 +107,20 @@
     document.getElementById("prev").onclick = function () {
         location.href = "{{ route('admin.subcategories') }}";
     };
+</script>
+
+<script>
+    function mainThambUrl(input){
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#mainThmb').attr('src',e.target.result).width(150)
+                  .height(120);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
 </script>
 @endpush
 

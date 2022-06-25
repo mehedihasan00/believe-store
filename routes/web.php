@@ -31,7 +31,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/submenu/{id}', [HomeController::class, 'submenu'])->name('submenu');
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');
-
+// serarch route
+Route::get('/get_suggestions/{k}', [HomeController::class, 'getSearchSuggestions']);
+Route::get('/search', [HomeController::class, 'productSearch'])->name('search');
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
 Route::post('admin', [AuthenticationController::class, 'AuthCheck'])->name('login.check');

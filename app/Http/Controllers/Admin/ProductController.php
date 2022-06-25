@@ -27,20 +27,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'category_id' => 'required',
-        //     'subcategory_id' => 'required',
-        //     'name' => 'required|max:100',
-        //     'description' => 'required',
-        //     'image' => 'required|image|mimes:jpeg,jpg,png,gif',
-        // ]);
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'name' => 'required|max:100',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp',
+        ]);
         
         try {
-            $image = $request->file('image');
-            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
-            $save_url = 'uploads/product/'.$name_gen;
-
+            
+            if($request->hasFile('image')){
+                $image = $request->file('image');
+                $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
+                $save_url = 'uploads/product/'.$name_gen;
+            }
+            
             $product = new Product();
             $product->category_id = $request->category_id;
             $product->subcategory_id = $request->subcategory_id;
@@ -102,14 +105,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'name' => 'required|max:100',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,jpg,png,gif',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp',
         ]);
-        
         $old_img = $request->old_image;
         if ($request->file('image')) {
             unlink($old_img);

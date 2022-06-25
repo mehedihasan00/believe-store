@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="custom-img">
                     <a class="img-anchor" href="{{ route('productDetail', $item->id) }}">
-                        <img src="{{ asset($item->image) }}" alt=""  style="height: 316px">
+                        <img src="{{ asset($item->image) }}" alt="{{ $item->name }}">
                     </a>
                 </div>
             </div>
