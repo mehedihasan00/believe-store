@@ -13,9 +13,9 @@
             <div class="container-fluid">
                 <div class="nav-box">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ $content->logo }}" alt="" style="width: 45px; height: 45px">
+                        <img src="{{ $content->logo }}" alt="" style="width: auto; height: 45px">
                     </a>
-                    <a class="navbar-brand text-uppercase" href="{{ route('home') }}">{{ $content->name }}</a>
+                    <a class="navbar-brand text-uppercase p-0" href="{{ route('home') }}">{{ $content->name }}</a>
 
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
