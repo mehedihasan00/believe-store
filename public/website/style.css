@@ -114,11 +114,15 @@ a {
     background-color: #ff0000;
 }
 .navbar .navbar-brand {
-    padding-left: 30px;
     color: #fff;
     font-size: 1.4rem;
     font-weight: 700;
     font-family: sans-serif;
+}
+@media(min-width: 1200px) {
+    .navbar .navbar-brand {
+        padding-left: 30px;
+    }
 }
 .navbar .input-group-text {
     background-color: #fff;

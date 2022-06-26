@@ -11,7 +11,13 @@
     <div class="main-head">
         <nav class="navbar navbar-expand-lg nav-background scrolling-navbar">
             <div class="container-fluid">
-                <a class="navbar-brand text-uppercase" href="{{ route('home') }}">{{ $content->name }}</a>
+                <div class="nav-box">
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <img src="{{ $content->logo }}" alt="" style="width: 45px; height: 45px">
+                    </a>
+                    <a class="navbar-brand text-uppercase" href="{{ route('home') }}">{{ $content->name }}</a>
+
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
