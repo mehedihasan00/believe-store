@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="nav-box">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ $content->logo }}" alt="" style="width: auto; height: 45px">
+                        <img src="{{ asset($content->logo) }}" alt="" style="width: auto; height: 45px">
                     </a>
                     <a class="navbar-brand text-uppercase p-0" href="{{ route('home') }}">{{ $content->name }}</a>
 

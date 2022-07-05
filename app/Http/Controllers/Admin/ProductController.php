@@ -90,7 +90,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $productData = Product::find($id);
-        $subcategory = Subcategory::latest()->get();
+        // $subcategory = Subcategory::latest()->get();
+        $subcategory = Subcategory::where('category_id', $productData->category_id)->get();
         $category = Category::latest()->get();
         $product = Product::latest()->get();
         return view('pages.admin.product', compact('productData', 'subcategory', 'category', 'product'));

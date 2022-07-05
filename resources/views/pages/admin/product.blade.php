@@ -52,8 +52,10 @@
                                     <label for="name" class="mb-2"> Subcategory <span class="text-danger">*</span> </label>
                                     <select name="subcategory_id" class="form-control mb-2">
                                         <option value="">Select Subcategory Option</option>
-                                        
-                                        
+                                        @foreach($subcategory as $item)
+                                         <option value="{{ $item->id }}" {{ $item->id == @$productData->subcategory_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        @endforeach 
+
                                     </select>
                                     @error('category_id') <span style="color: red">{{$message}}</span> @enderror
 

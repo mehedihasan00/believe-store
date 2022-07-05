@@ -25,7 +25,7 @@
             @foreach($subcategory as $item)
             <div class="col-md-3 col-sm-6 col-12 padding-bottom-24">
                 <div class="custom-img">
-                    <a class="img-anchor">
+                    <a class="img-anchor" href="{{ route('product', $item->id) }}">
                         <img src="{{ asset('uploads/subcategory/'. $item->image) }}" alt="{{ $item->name }}">
                     </a>
                     <div class="category-title">{{ $item->name }}</div>

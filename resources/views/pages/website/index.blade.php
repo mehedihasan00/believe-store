@@ -11,7 +11,7 @@
             @foreach($category as $item)
             <div class="col-md-3 col-sm-6 col-12 padding-bottom-24">
                 <div class="custom-img">
-                    <a class="img-anchor">
+                    <a class="img-anchor" href="{{ route('submenu', $item->id) }}">
                         <img src="{{ asset($item->image) }}" alt="{{ $item->name }}">
                         <div class="img-button">
                         </div>
